@@ -1,0 +1,62 @@
+@import "variables";
+
+// -------   Mixins   -------
+@mixin desktop-view($width: 1440px, $height: unset, $f-size: unset) {
+  @media screen and (min-width: 1440px) {
+    width: $width;
+    height: $height;
+    font-size: $f-size;
+  }
+}
+
+@mixin button {
+  background-color: $Bright-Blue;
+  color: $Light-Grayish-Blue;
+  font-family: $font-headings;
+  font-size: 0.9em;
+  font-weight: 700;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    filter: brightness(120%);
+  }
+}
+
+@mixin illustration-desktop-view {
+  @media screen and (min-width: 1440px) {
+    width: 640px;
+  }
+}
+
+@mixin sections-desktop-view($gap, $reverse: false) {
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    @if $reverse == true {
+      flex-direction: row-reverse;
+    }
+    align-items: center;
+    gap: $gap;
+  }
+}
+
+@mixin form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+
+  & input {
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid $Light-Gray;
+  }
+  & input[type="text"] {
+    padding-left: 15px;
+  }
+  & input[type="text"]::placeholder {
+    color: $Light-Gray;
+  }
+  & input[type="submit"] {
+    @include button;
+  }
+}
